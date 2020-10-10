@@ -1,0 +1,10 @@
+package Task1;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Thread TM = new Thread (new ChildThread ());
+		TM.start();
+	}
+
+}
