@@ -1,9 +1,5 @@
 package Task1;
 
-// This is a task which has the objective to develop an algorithm which uses two threads. 
-// One of them to  print "Programação paralela" on the console, and the second one to print
-// “Instituto Federal Fluminense” on the console.
-
 public class ChildThread implements Runnable {
 	
 	public void run() {
