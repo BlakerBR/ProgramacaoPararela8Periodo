@@ -1,5 +1,9 @@
 package task2;
 
+import javax.swing.JOptionPane;
+
+import org.apache.commons.lang3.StringUtils;
+
 // TASL:
 // Consider two numbers a e b (b≠ 0) read by the keyboard and a time ti, 
 // randomly generated from 1 to 20, where ∈{Sum,Sub,Mul,Div}. Develop an 
@@ -12,7 +16,22 @@ package task2;
 public class Main {
 	
 	public static void main(String[] args) {
-
+		String numA;
+		String numB;
+		
+		do
+		{
+			numA = (String)JOptionPane.showInputDialog("Insira um número:");
+			if (!StringUtils.isNumeric(numA))
+				JOptionPane.showMessageDialog(null, "Caracter inserido não é um número!", null, JOptionPane.WARNING_MESSAGE);
+		}while(!StringUtils.isNumeric(numA));
+		
+		do
+		{
+			numB = (String)JOptionPane.showInputDialog("Insira outro número:");
+			if (!StringUtils.isNumeric(numB))
+				JOptionPane.showMessageDialog(null, "Caracter inserido não é um número!", null, JOptionPane.WARNING_MESSAGE);
+		}while(!StringUtils.isNumeric(numB));
 		
 		Thread sub = new Thread (new ChildThread ("1", "2", '-', "SUBTRACAO "));
 		Thread sum = new Thread (new ChildThread ("1", "2", '+', "SOMA"));
