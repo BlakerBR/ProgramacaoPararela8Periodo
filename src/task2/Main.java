@@ -12,7 +12,8 @@ package task2;
 public class Main {
 	
 	public static void main(String[] args) {
-		
+		Thread sum = new Thread (new ChildThread ("1", "2", '+', "SOMA"));
+		sum.start();
 	}
 
 }
