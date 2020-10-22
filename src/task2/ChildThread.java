@@ -28,7 +28,7 @@ public class ChildThread implements Runnable {
 			Object result = engine.eval(numA + operator + numB);
 			System.out.println("Eu sou a Thread " + name + " (" + result + ") e vou dormir por " + time + " segundos!");
 			Thread.sleep((time*1000));
-			System.out.println(" Eu sou a Thread " + name + " (" + result + "). Já se passaram " + time + " segundos, então terminei!");
+			System.out.println("Eu sou a Thread " + name + " (" + result + "). Já se passaram " + time + " segundos, então terminei!");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

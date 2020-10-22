@@ -12,8 +12,16 @@ package task2;
 public class Main {
 	
 	public static void main(String[] args) {
+
+		
+		Thread sub = new Thread (new ChildThread ("1", "2", '-', "SUBTRACAO "));
 		Thread sum = new Thread (new ChildThread ("1", "2", '+', "SOMA"));
+		Thread div = new Thread (new ChildThread ("1", "2", '/', "DIVISAO "));
+		Thread mul = new Thread (new ChildThread ("1", "2", '*', "MULTIPLICACAO"));
+		sub.start();
 		sum.start();
+		div.start();
+		mul.start();
 	}
 
 }
