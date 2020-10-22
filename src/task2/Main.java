@@ -10,5 +10,9 @@ package task2;
 // and print it on the screen, after the passing of the ti seconds, which it is then going to end.
 
 public class Main {
+	
+	public static void main(String[] args) {
+		
+	}
 
 }
