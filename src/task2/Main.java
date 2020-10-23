@@ -16,31 +16,31 @@ import org.apache.commons.lang3.StringUtils;
 public class Main {
 	
 	public static void main(String[] args) {
-		String numA;
-		String numB;
+		String numA = getNumber();
+		String numB = getNumber();
 		
-		do
-		{
-			numA = (String)JOptionPane.showInputDialog("Insira um número:");
-			if (!StringUtils.isNumeric(numA))
-				JOptionPane.showMessageDialog(null, "Caracter inserido não é um número!", null, JOptionPane.WARNING_MESSAGE);
-		}while(!StringUtils.isNumeric(numA));
-		
-		do
-		{
-			numB = (String)JOptionPane.showInputDialog("Insira outro número:");
-			if (!StringUtils.isNumeric(numB))
-				JOptionPane.showMessageDialog(null, "Caracter inserido não é um número!", null, JOptionPane.WARNING_MESSAGE);
-		}while(!StringUtils.isNumeric(numB));
-		
-		Thread sub = new Thread (new ChildThread ("1", "2", '-', "SUBTRACAO "));
-		Thread sum = new Thread (new ChildThread ("1", "2", '+', "SOMA"));
-		Thread div = new Thread (new ChildThread ("1", "2", '/', "DIVISAO "));
-		Thread mul = new Thread (new ChildThread ("1", "2", '*', "MULTIPLICACAO"));
+		Thread sub = new Thread (new ChildThread (numA, numB, '-', "SUBTRACAO "));
+		Thread sum = new Thread (new ChildThread (numA, numB, '+', "SOMA"));
+		Thread div = new Thread (new ChildThread (numA, numB, '/', "DIVISAO "));
+		Thread mul = new Thread (new ChildThread (numA, numB, '*', "MULTIPLICACAO"));
 		sub.start();
 		sum.start();
 		div.start();
 		mul.start();
+	}
+	
+	private static String getNumber()
+	{
+		String number;
+		
+		do
+		{
+			number = (String)JOptionPane.showInputDialog("Insira um número:");
+			if (!StringUtils.isNumeric(number))
+				JOptionPane.showMessageDialog(null, "Caracter inserido não é um número!", null, JOptionPane.WARNING_MESSAGE);
+		}while(!StringUtils.isNumeric(number));
+		
+		return number;
 	}
 
 }
