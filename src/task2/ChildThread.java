@@ -6,14 +6,13 @@ import javax.script.ScriptEngineManager;
 
 public class ChildThread implements Runnable {
 	
-	String numA;
-	String numB;
-	char operator;
-	String name;
+	private String numA;
+	private String numB;
+	private char operator;
+	private String name;
 	
-	Random numberGenerator = new Random();
-	ScriptEngineManager manager = new ScriptEngineManager();
-	ScriptEngine engine = manager.getEngineByName("js");
+	private Random numberGenerator = new Random();
+	private ScriptEngine graalEngine = new ScriptEngineManager().getEngineByName("graal.js");
 	
 	public ChildThread(String numA, String numB, char operator, String name) {
 		this.numA = numA;
@@ -25,7 +24,7 @@ public class ChildThread implements Runnable {
 	public void run() {
 		try {
 			int time = numberGenerator.nextInt(20)+1;
-			Object result = engine.eval(numA + operator + numB);
+			Object result = graalEngine.eval(numA + operator + numB);
 			System.out.println("Eu sou a Thread " + name + " (" + result + ") e vou dormir por " + time + " segundos!");
 			Thread.sleep((time*1000));
 			System.out.println("Eu sou a Thread " + name + " (" + result + "). Já se passaram " + time + " segundos, então terminei!");
