@@ -19,9 +19,9 @@ public class Main {
 		String numA = getNumber();
 		String numB = getNumber();
 		
-		Thread sub = new Thread (new ChildThread (numA, numB, '-', "SUBTRACAO "));
+		Thread sub = new Thread (new ChildThread (numA, numB, '-', "SUBTRACAO"));
 		Thread sum = new Thread (new ChildThread (numA, numB, '+', "SOMA"));
-		Thread div = new Thread (new ChildThread (numA, numB, '/', "DIVISAO "));
+		Thread div = new Thread (new ChildThread (numA, numB, '/', "DIVISAO"));
 		Thread mul = new Thread (new ChildThread (numA, numB, '*', "MULTIPLICACAO"));
 		sub.start();
 		sum.start();
