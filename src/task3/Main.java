@@ -23,21 +23,27 @@ public class Main {
 		Semaphore sem = new Semaphore(1);
 		Shared.generateTime();
 	
-		Thread sum = new Thread (new ChildThread (numA, numB, numN, '+', "SOMA", sem));
-		Thread sub = new Thread (new ChildThread (numA, numB, numN, '-', "SUBTRACAO", sem));
-		Thread mul = new Thread (new ChildThread (numA, numB, numN, '*', "MULTIPLICACAO", sem));
-		Thread div = new Thread (new ChildThread (numA, numB, numN, '/', "DIVISAO", sem));
+		Thread sum = new Thread (new ChildThread (numA, numB, '+', "SOMA", sem));
+		Thread sub = new Thread (new ChildThread (numA, numB, '-', "SUBTRACAO", sem));
+		Thread mul = new Thread (new ChildThread (numA, numB, '*', "MULTIPLICACAO", sem));
+		Thread div = new Thread (new ChildThread (numA, numB, '/', "DIVISAO", sem));
 		
 		try {
 			sum.start();
 			sub.start();
 			mul.start();
 			div.start();
-	
-			sum.join();
-			sub.join();
-			mul.join();
-			div.join();
+			
+			for(int i = 0; i < numN; i++)
+			{
+				sum.join();
+				sub.join();
+				mul.join();
+				div.join();
+				
+				System.out.println("Dormir por " + Shared.getTime() + "!");
+				Thread.sleep(Shared.getTime());
+			}
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
