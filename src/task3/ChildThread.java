@@ -33,6 +33,7 @@ public class ChildThread implements Runnable {
 				Object result = graalEngine.eval(numA + operator + numB);
 				System.out.println("Eu sou a Thread " + name + " e meu resultado é " + result + "!");
 				sem.release();
+				Thread.sleep(Shared.getTime());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

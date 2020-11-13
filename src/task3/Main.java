@@ -21,6 +21,7 @@ public class Main {
 		String numB = Util.getNumber();
 		int numN = Integer.parseInt(Util.getNumber());
 		Semaphore sem = new Semaphore(1);
+		Shared.generateTime();
 	
 		Thread sum = new Thread (new ChildThread (numA, numB, numN, '+', "SOMA", sem));
 		Thread sub = new Thread (new ChildThread (numA, numB, numN, '-', "SUBTRACAO", sem));
