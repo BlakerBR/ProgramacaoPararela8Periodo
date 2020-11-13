@@ -1,6 +1,5 @@
 package task3;
 
-import task2.ChildThread;
 import util.Util;
 
 //TASK:
@@ -23,6 +22,7 @@ public class Main {
 	Thread sum = new Thread (new ChildThread (numA, numB, '+', "SOMA"));
 	Thread div = new Thread (new ChildThread (numA, numB, '/', "DIVISAO"));
 	Thread mul = new Thread (new ChildThread (numA, numB, '*', "MULTIPLICACAO"));
+	
 	sub.start();
 	sum.start();
 	div.start();
