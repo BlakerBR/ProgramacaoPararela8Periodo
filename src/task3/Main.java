@@ -1,5 +1,7 @@
 package task3;
 
+import java.util.concurrent.Semaphore;
+
 import util.Util;
 
 //TASK:
@@ -15,17 +17,28 @@ import util.Util;
 public class Main {
 
 	public static void main(String[] args) {
-	String numA = Util.getNumber();
-	String numB = Util.getNumber();
+		String numA = Util.getNumber();
+		String numB = Util.getNumber();
+		int numN = Integer.parseInt(Util.getNumber());
+		Semaphore sem = new Semaphore(1);
 	
-	Thread sub = new Thread (new ChildThread (numA, numB, '-', "SUBTRACAO"));
-	Thread sum = new Thread (new ChildThread (numA, numB, '+', "SOMA"));
-	Thread div = new Thread (new ChildThread (numA, numB, '/', "DIVISAO"));
-	Thread mul = new Thread (new ChildThread (numA, numB, '*', "MULTIPLICACAO"));
+		Thread sum = new Thread (new ChildThread (numA, numB, numN, '+', "SOMA", sem));
+		Thread sub = new Thread (new ChildThread (numA, numB, numN, '-', "SUBTRACAO", sem));
+		Thread mul = new Thread (new ChildThread (numA, numB, numN, '*', "MULTIPLICACAO", sem));
+		Thread div = new Thread (new ChildThread (numA, numB, numN, '/', "DIVISAO", sem));
+		
+		try {
+			sum.start();
+			sub.start();
+			mul.start();
+			div.start();
 	
-	sub.start();
-	sum.start();
-	div.start();
-	mul.start();
+			sum.join();
+			sub.join();
+			mul.join();
+			div.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 }
