@@ -1,5 +1,8 @@
 package task3;
 
+import task2.ChildThread;
+import util.Util;
+
 //TASK:
 //Develop an algorythm which uses four Threads, where each one is going to calculate and print one of the four basic operations about the 
 //numbers a and b in the following order, N times: Sum (So), subtraction (Su), multiplication (Mu) and division (Di).
@@ -13,6 +16,16 @@ package task3;
 public class Main {
 
 	public static void main(String[] args) {
+	String numA = Util.getNumber();
+	String numB = Util.getNumber();
+	
+	Thread sub = new Thread (new ChildThread (numA, numB, '-', "SUBTRACAO"));
+	Thread sum = new Thread (new ChildThread (numA, numB, '+', "SOMA"));
+	Thread div = new Thread (new ChildThread (numA, numB, '/', "DIVISAO"));
+	Thread mul = new Thread (new ChildThread (numA, numB, '*', "MULTIPLICACAO"));
+	sub.start();
+	sum.start();
+	div.start();
+	mul.start();
 	}
-
 }
