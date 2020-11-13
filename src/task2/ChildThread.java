@@ -1,9 +1,8 @@
 package task2;
 
+import java.util.Random;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
-
-import util.Util;
 
 public class ChildThread implements Runnable {
 	
@@ -12,6 +11,7 @@ public class ChildThread implements Runnable {
 	private char operator;
 	private String name;
 	
+	private Random numberGenerator = new Random();
 	private ScriptEngine graalEngine = new ScriptEngineManager().getEngineByName("graal.js");
 	
 	public ChildThread(String numA, String numB, char operator, String name) {
@@ -23,8 +23,7 @@ public class ChildThread implements Runnable {
 	
 	public void run() {
 		try {
-			Util.genNewRandTime();
-			int time = Util.getRandTime()+1;
+			int time = numberGenerator.nextInt(20)+1;
 			Object result = graalEngine.eval(numA + operator + numB);
 			System.out.println("Eu sou a Thread " + name + " (" + result + ") e vou dormir por " + time + " segundos!");
 			Thread.sleep((time*1000));
