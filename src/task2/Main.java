@@ -4,7 +4,7 @@ import javax.swing.JOptionPane;
 
 import org.apache.commons.lang3.StringUtils;
 
-// TASL:
+// TASK:
 // Consider two numbers a and b (b≠ 0) read by the keyboard and a time ti, 
 // randomly generated from 1 to 20, where ∈{Sum,Sub,Mul,Div}. Develop an 
 // algorithm which creates four threads, where each one will calculate one of 

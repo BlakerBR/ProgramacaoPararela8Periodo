@@ -1,6 +1,6 @@
 package task1;
 
-//TASL:
+//TASK:
 //This is a task which has the objective to develop an algorithm which uses two threads. 
 //One of them to  print "Programação Paralela" on the console, and the second one to print
 //“Instituto Federal Fluminense” on the console.
