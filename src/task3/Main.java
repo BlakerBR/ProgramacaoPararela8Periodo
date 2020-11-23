@@ -1,6 +1,6 @@
 package task3;
 
-import java.util.concurrent.Semaphore;
+import java.lang.Thread.State;
 
 import util.Util;
 
@@ -20,24 +20,46 @@ public class Main {
 		String numA = Util.getNumber();
 		String numB = Util.getNumber();
 		int numN = Integer.parseInt(Util.getNumber());
-		Semaphore sem = new Semaphore(1);
 	
-		Thread sum = new Thread (new ChildThread (numA, numB, numN, '+', "SOMA", sem));
-		Thread sub = new Thread (new ChildThread (numA, numB, numN, '-', "SUBTRACAO", sem));
-		Thread mul = new Thread (new ChildThread (numA, numB, numN, '*', "MULTIPLICACAO", sem));
-		Thread div = new Thread (new ChildThread (numA, numB, numN, '/', "DIVISAO", sem));
+		ChildThread sum = new ChildThread (numA, numB, numN, '+', "SOMA");
+		ChildThread sub = new ChildThread (numA, numB, numN, '-', "SUBTRACAO");
+		ChildThread mul = new ChildThread (numA, numB, numN, '*', "MULTIPLICACAO");
+		ChildThread div = new ChildThread (numA, numB, numN, '/', "DIVISAO");
 		
 		try {
 			sum.start();
 			sub.start();
 			mul.start();
 			div.start();
-			
 
-			sum.join();
-			sub.join();
-			mul.join();
-			div.join();
+			Thread.sleep(3000);
+
+			for(int i = 0; i < numN;) {
+				if(div.getState() == State.WAITING) {
+					sum.notice();
+					while((sum.getState() != State.WAITING) && (sum.getState() != State.TERMINATED))
+						Thread.sleep(1000);
+				}
+				
+				if((sum.getState() == State.WAITING) || (sum.getState() == State.TERMINATED)) {
+					sub.notice();
+					while((sub.getState() != State.WAITING) && (sub.getState() != State.TERMINATED))
+						Thread.sleep(1000);
+				}
+				
+				if((sub.getState() == State.WAITING) || (sub.getState() == State.TERMINATED)) {
+					mul.notice();
+					while((mul.getState() != State.WAITING) && (mul.getState() != State.TERMINATED))
+						Thread.sleep(1000);
+				}
+				
+				if((mul.getState() == State.WAITING) || (mul.getState() == State.TERMINATED)) {
+					div.notice();
+					while((div.getState() != State.WAITING) && (div.getState() != State.TERMINATED))
+						Thread.sleep(1000);
+					i++;
+				}
+			}
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
