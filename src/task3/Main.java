@@ -19,13 +19,13 @@ public class Main {
 	public static void main(String[] args) {
 		String numA = Util.getNumber();
 		String numB = Util.getNumber();
-		//int numN = Integer.parseInt(Util.getNumber());
+		int numN = Integer.parseInt(Util.getNumber());
 		Semaphore sem = new Semaphore(1);
 	
-		Thread sum = new Thread (new ChildThread (numA, numB, '+', "SOMA", sem));
-		Thread sub = new Thread (new ChildThread (numA, numB, '-', "SUBTRACAO", sem));
-		Thread mul = new Thread (new ChildThread (numA, numB, '*', "MULTIPLICACAO", sem));
-		Thread div = new Thread (new ChildThread (numA, numB, '/', "DIVISAO", sem));
+		Thread sum = new Thread (new ChildThread (numA, numB, numN, '+', "SOMA", sem));
+		Thread sub = new Thread (new ChildThread (numA, numB, numN, '-', "SUBTRACAO", sem));
+		Thread mul = new Thread (new ChildThread (numA, numB, numN, '*', "MULTIPLICACAO", sem));
+		Thread div = new Thread (new ChildThread (numA, numB, numN, '/', "DIVISAO", sem));
 		
 		try {
 			sum.start();
@@ -33,6 +33,7 @@ public class Main {
 			mul.start();
 			div.start();
 			
+
 			sum.join();
 			sub.join();
 			mul.join();
