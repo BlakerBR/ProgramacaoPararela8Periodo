@@ -22,7 +22,7 @@ public class ChildThread implements Runnable {
 		this.operator = operator;
 		this.name = name;
 		this.sem = sem;
-		this.running = true; 
+		this.running = true;
 	}
 	
 	public void run() {
@@ -42,7 +42,7 @@ public class ChildThread implements Runnable {
 		}
 	}
 	
-	synchronized void startWait()
+	private synchronized void startWait()
 	{
 		try {
 	         while(running) 
@@ -50,5 +50,10 @@ public class ChildThread implements Runnable {
 	      } catch(InterruptedException exc) {
 	         System.out.println("wait() interrupted");
 	      }
+	}
+
+	public synchronized void notice() {
+		running = true;
+		notify();
 	}
 }
