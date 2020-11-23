@@ -1,9 +1,9 @@
 package task3;
 
 import java.util.concurrent.Semaphore;
-
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
+import util.Util;
 
 public class ChildThread implements Runnable {
 	
@@ -29,9 +29,9 @@ public class ChildThread implements Runnable {
 		try {
 				while(running) {
 					sem.acquire();
-					Shared.generateTime();
-					System.out.println("Sou a thread " + name + " e vou dormir por " + Shared.getTime() + "!");
-					Thread.sleep(Shared.getTime()*1000);
+					Util.generateTime();
+					System.out.println("Sou a thread " + name + " e vou dormir por " + Util.getTime() + "!");
+					Thread.sleep(Util.getTime()*1000);
 					Object result = graalEngine.eval(numA + operator + numB);
 					System.out.println("Eu sou a Thread " + name + " e meu resultado é " + result + "!");
 					sem.release();
@@ -45,7 +45,7 @@ public class ChildThread implements Runnable {
 	synchronized void startWait()
 	{
 		try {
-	         while(!running) 
+	         while(running) 
 	        	 wait();
 	      } catch(InterruptedException exc) {
 	         System.out.println("wait() interrupted");

@@ -1,9 +1,14 @@
 package util;
 
+import java.util.Random;
+
 import javax.swing.JOptionPane;
 import org.apache.commons.lang3.StringUtils;
 
 public class Util {
+
+	private static int time;
+	private static Random numberGenrator;
 	
 	public static String getNumber() {
 		String number;
@@ -16,5 +21,14 @@ public class Util {
 		}while(!StringUtils.isNumeric(number));
 		
 		return number;
+	}
+	
+	public static void generateTime() {
+		numberGenrator = new Random();
+		time = numberGenrator.nextInt(10)+1;
+	}
+	
+	public static int getTime() {
+		return time;
 	}
 }
