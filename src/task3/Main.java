@@ -21,7 +21,6 @@ public class Main {
 		String numB = Util.getNumber();
 		int numN = Integer.parseInt(Util.getNumber());
 		Semaphore sem = new Semaphore(1);
-		Shared.generateTime();
 	
 		Thread sum = new Thread (new ChildThread (numA, numB, '+', "SOMA", sem));
 		Thread sub = new Thread (new ChildThread (numA, numB, '-', "SUBTRACAO", sem));
@@ -34,15 +33,17 @@ public class Main {
 			mul.start();
 			div.start();
 			
+			sum.join();
+			sub.join();
+			mul.join();
+			div.join();
+			
 			for(int i = 0; i < numN; i++)
 			{
-				sum.join();
-				sub.join();
-				mul.join();
-				div.join();
-				
-				System.out.println("Dormir por " + Shared.getTime() + "!");
-				Thread.sleep(Shared.getTime());
+				sum.notify();
+				sub.notify();
+				mul.notify();
+				div.notify();
 			}
 		} catch (InterruptedException e) {
 			e.printStackTrace();
