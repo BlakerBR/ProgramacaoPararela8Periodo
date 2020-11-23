@@ -29,7 +29,7 @@ public class ChildThread implements Runnable {
 				for(int i = 0; i < numN; i++)
 				{
 					sem.acquire();
-					Util.generateTime();
+					Util.generateTime(1, 3);
 					System.out.println("Sou a thread " + name + " e vou dormir por " + Util.getTime() + " segundos!");
 					Thread.sleep(Util.getTime()*1000);
 					Object result = graalEngine.eval(numA + operator + numB);

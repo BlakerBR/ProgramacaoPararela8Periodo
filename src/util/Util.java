@@ -23,9 +23,9 @@ public class Util {
 		return number;
 	}
 	
-	public static void generateTime() {
+	public static void generateTime(int min, int max) {
 		numberGenrator = new Random();
-		time = numberGenrator.nextInt(10)+1;
+		time = numberGenrator.nextInt(max)+min;
 	}
 	
 	public static int getTime() {
