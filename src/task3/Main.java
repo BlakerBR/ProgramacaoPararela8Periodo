@@ -19,7 +19,7 @@ public class Main {
 	public static void main(String[] args) {
 		String numA = Util.getNumber();
 		String numB = Util.getNumber();
-		Shared.setNumN(Integer.parseInt(Util.getNumber()));
+		//int numN = Integer.parseInt(Util.getNumber());
 		Semaphore sem = new Semaphore(1);
 	
 		Thread sum = new Thread (new ChildThread (numA, numB, '+', "SOMA", sem));
@@ -37,15 +37,6 @@ public class Main {
 			sub.join();
 			mul.join();
 			div.join();
-			
-			for(int i = 0; i < Shared.getNumN(); i++)
-			{
-				System.out.println("teste");
-				sum.notify();
-				sub.notify();
-				mul.notify();
-				div.notify();
-			}
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
