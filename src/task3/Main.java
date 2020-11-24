@@ -34,7 +34,7 @@ public class Main {
 
 			Thread.sleep(3000);
 
-			for(int i = 0; i < numN;) {
+			for(int i = 0; i < numN; i++) {
 				if(div.getState() == State.WAITING) {
 					sum.notice();
 					while((sum.getState() != State.WAITING) && (sum.getState() != State.TERMINATED))
@@ -57,7 +57,6 @@ public class Main {
 					div.notice();
 					while((div.getState() != State.WAITING) && (div.getState() != State.TERMINATED))
 						Thread.sleep(1000);
-					i++;
 				}
 			}
 		} catch (InterruptedException e) {
