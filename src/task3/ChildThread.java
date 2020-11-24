@@ -26,7 +26,7 @@ public class ChildThread extends Thread {
 				for(int i = 0; i < numN; i++)
 				{
 					startWait();
-					Util.generateTime(1, 3);
+					Util.generateTime(1, 10);
 					System.out.println("Sou a thread " + name + " e vou dormir por " + Util.getTime() + " segundos!");
 					Thread.sleep(Util.getTime()*1000);
 					Object result = graalEngine.eval(numA + operator + numB);
