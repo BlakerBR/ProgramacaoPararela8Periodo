@@ -35,31 +35,24 @@ public class Main {
 			Thread.sleep(3000);
 
 			for(int i = 0; i < numN; i++) {
-				if(div.getState() == State.WAITING) {
-					sum.notice();
-					while((sum.getState() != State.WAITING) && (sum.getState() != State.TERMINATED))
-						Thread.sleep(1000);
-				}
+				sum.notice();
+				while((sum.getState() != State.WAITING) && (sum.getState() != State.TERMINATED))
+					Thread.sleep(1000);
 				
-				if((sum.getState() == State.WAITING) || (sum.getState() == State.TERMINATED)) {
-					sub.notice();
-					while((sub.getState() != State.WAITING) && (sub.getState() != State.TERMINATED))
-						Thread.sleep(1000);
-				}
+				sub.notice();
+				while((sub.getState() != State.WAITING) && (sub.getState() != State.TERMINATED))
+					Thread.sleep(1000);
 				
-				if((sub.getState() == State.WAITING) || (sub.getState() == State.TERMINATED)) {
-					mul.notice();
-					while((mul.getState() != State.WAITING) && (mul.getState() != State.TERMINATED))
-						Thread.sleep(1000);
-				}
+				mul.notice();
+				while((mul.getState() != State.WAITING) && (mul.getState() != State.TERMINATED))
+					Thread.sleep(1000);
 				
-				if((mul.getState() == State.WAITING) || (mul.getState() == State.TERMINATED)) {
-					div.notice();
-					while((div.getState() != State.WAITING) && (div.getState() != State.TERMINATED))
-						Thread.sleep(1000);
-				}
+				div.notice();
+				while((div.getState() != State.WAITING) && (div.getState() != State.TERMINATED))
+					Thread.sleep(1000);
 			}
-		} catch (InterruptedException e) {
+		}
+		catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 	}
