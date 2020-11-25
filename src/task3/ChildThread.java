@@ -11,6 +11,7 @@ public class ChildThread extends Thread {
 	private char operator;
 	private String name;
 	private int numN;
+	private int time;
 	private ScriptEngine graalEngine = new ScriptEngineManager().getEngineByName("graal.js");
 	
 	public ChildThread(String numA, String numB, int numN, char operator, String name) {
@@ -26,9 +27,9 @@ public class ChildThread extends Thread {
 				for(int i = 0; i < numN; i++)
 				{
 					startWait();
-					Util.generateTime(1, 10);
-					System.out.println("Sou a thread " + name + " e vou dormir por " + Util.getTime() + " segundos!");
-					Thread.sleep(Util.getTime()*1000);
+					Util.generateNumber(1, 10);
+					System.out.println("Sou a thread " + name + " e vou dormir por " + time + " segundos!");
+					Thread.sleep(time*1000);
 					Object result = graalEngine.eval(numA + operator + numB);
 					System.out.println("Eu sou a Thread " + name + " e meu resultado é " + result + "!\n");
 				}

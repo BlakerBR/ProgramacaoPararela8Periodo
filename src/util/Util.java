@@ -6,9 +6,6 @@ import javax.swing.JOptionPane;
 import org.apache.commons.lang3.StringUtils;
 
 public class Util {
-
-	private static int time;
-	private static Random numberGenrator;
 	
 	public static String getNumber() {
 		String number;
@@ -23,12 +20,8 @@ public class Util {
 		return number;
 	}
 	
-	public static void generateTime(int min, int max) {
-		numberGenrator = new Random();
-		time = numberGenrator.nextInt(max)+min;
-	}
-	
-	public static int getTime() {
-		return time;
+	public static int generateNumber(int min, int max) {;
+		Random numberGenrator = new Random();
+		return numberGenrator.nextInt(max)+min;
 	}
 }
