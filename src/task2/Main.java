@@ -16,15 +16,24 @@ public class Main {
 	public static void main(String[] args) {
 		String numA = Util.getNumber();
 		String numB = Util.getNumber();
-		
-		Thread sub = new Thread (new ChildThread (numA, numB, '-', "SUBTRACAO"));
-		Thread sum = new Thread (new ChildThread (numA, numB, '+', "SOMA"));
-		Thread div = new Thread (new ChildThread (numA, numB, '/', "DIVISAO"));
-		Thread mul = new Thread (new ChildThread (numA, numB, '*', "MULTIPLICACAO"));
-		
-		sub.start();
-		sum.start();
-		div.start();
-		mul.start();
+
+		try {
+			Thread sub = new Thread (new ChildThread (numA, numB, '-', "SUBTRACAO"));
+			Thread sum = new Thread (new ChildThread (numA, numB, '+', "SOMA"));
+			Thread div = new Thread (new ChildThread (numA, numB, '/', "DIVISAO"));
+			Thread mul = new Thread (new ChildThread (numA, numB, '*', "MULTIPLICACAO"));
+			
+			sub.start();
+			Thread.sleep(1000);
+			sum.start();
+			Thread.sleep(1000);
+			div.start();
+			Thread.sleep(1000);
+			mul.start();
+		} 
+		catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
