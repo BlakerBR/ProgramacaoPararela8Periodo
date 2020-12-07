@@ -20,7 +20,7 @@ public class Util {
 		return number;
 	}
 	
-	public static int generateNumber(int min, int max) {;
+	public static int generateNumber(int min, int max) {
 		Random numberGenrator = new Random();
 		return numberGenrator.nextInt(max)+min;
 	}

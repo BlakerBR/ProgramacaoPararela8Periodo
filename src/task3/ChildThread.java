@@ -27,13 +27,14 @@ public class ChildThread extends Thread {
 				for(int i = 0; i < numN; i++)
 				{
 					startWait();
-					Util.generateNumber(1, 10);
+					time = Util.generateNumber(1, 10);
 					System.out.println("Sou a thread " + name + " e vou dormir por " + time + " segundos!");
 					Thread.sleep(time*1000);
 					Object result = graalEngine.eval(numA + operator + numB);
 					System.out.println("Eu sou a Thread " + name + " e meu resultado é " + result + "!\n");
 				}
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
