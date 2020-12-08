@@ -17,10 +17,8 @@ public class Main {
 				{1, 1, 1}
 		};
 		int[] vectorB = {2, -3, 1};
-		int[] vectorX = new int[3];
-		int sum;
 		
-		ThreadSum threadSum = new ThreadSum(lowerArray, vectorB);
+		ThreadSum threadSum = new ThreadSum(lowerArray);
 		ThreadVector threadVector = new ThreadVector(lowerArray, vectorB);
 		
 		try {
@@ -30,13 +28,14 @@ public class Main {
 				threadSum.notice();
 				while((threadSum.getState() != State.WAITING) && (threadSum.getState() != State.TERMINATED))
 					Thread.sleep(1000);
-				sum = threadSum.getSum();
-				System.out.println(sum);
+				threadVector.setSum(threadSum.getSum());
+				System.out.println(threadSum.getSum());
 				
 				threadVector.notice();
 				while((threadSum.getState() != State.WAITING) && (threadSum.getState() != State.TERMINATED))
 					Thread.sleep(1000);
-				System.out.println(vectorX[i]);
+				threadSum.setVectorX(threadVector.getVectorX());
+				System.out.println(threadVector.getVectorX()[i]);
 			}
 		}
 		catch (InterruptedException e) {
