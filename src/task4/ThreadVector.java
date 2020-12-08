@@ -17,6 +17,10 @@ public class ThreadVector extends Thread {
 		try {
 			for(int i = 0; i < vectorX.length; i++) {
 				startWait();
+				System.out.println(vectorX[i]);
+				System.out.println(vectorB[i]);
+				System.out.println(sum);
+				System.out.println(lowerArray[i][i]);
 				vectorX[i] = (vectorB[i] - sum)/lowerArray[i][i];
 			}
 		}
@@ -25,11 +29,11 @@ public class ThreadVector extends Thread {
 		}	
 	}
 	
-	public int[] getVectorX() {
+	public synchronized int[] getVectorX() {
 		return vectorX;
 	}
 
-	public void setSum(int sum) {
+	public synchronized void setSum(int sum) {
 		this.sum = sum;
 	}
 

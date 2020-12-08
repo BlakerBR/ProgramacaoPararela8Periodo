@@ -22,6 +22,12 @@ public class Main {
 		ThreadVector threadVector = new ThreadVector(lowerArray, vectorB);
 		
 		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e1) {
+			e1.printStackTrace();
+		}
+		
+		try {
 			threadSum.start();
 		
 			for(int i = 0; i < vectorB.length; i++) {
@@ -32,7 +38,7 @@ public class Main {
 				System.out.println(threadSum.getSum());
 				
 				threadVector.notice();
-				while((threadSum.getState() != State.WAITING) && (threadSum.getState() != State.TERMINATED))
+				while((threadVector.getState() != State.WAITING) && (threadVector.getState() != State.TERMINATED))
 					Thread.sleep(1000);
 				threadSum.setVectorX(threadVector.getVectorX());
 				System.out.println(threadVector.getVectorX()[i]);
