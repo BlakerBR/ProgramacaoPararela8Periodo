@@ -2,11 +2,11 @@ package task4;
 
 public class ThreadSum extends Thread {
 	
-	private int[][] lowerArray;
-	private int[] vectorX = new int[3];
-	private int sum;
+	private float[][] lowerArray;
+	private float[] vectorX = new float[3];
+	private float sum;
 	
-	public ThreadSum(int[][] lowerArray) {
+	public ThreadSum(float[][] lowerArray) {
 		super();
 		this.lowerArray = lowerArray;
 	}
@@ -25,11 +25,11 @@ public class ThreadSum extends Thread {
 		}
 	}
 	
-	public synchronized void setVectorX(int[] vectorX) {
+	public synchronized void setVectorX(float[] vectorX) {
 		this.vectorX = vectorX;
 	}
 	
-	public synchronized int getSum() {
+	public synchronized float getSum() {
 		return sum;
 	}
 	

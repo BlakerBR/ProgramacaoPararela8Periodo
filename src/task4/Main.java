@@ -11,21 +11,15 @@ import java.lang.Thread.State;
 public class Main {
 
 	public static void main(String[] args) {
-		int[][] lowerArray = {
+		float[][] lowerArray = {
 				{2, 0, 0},
 				{1, 4, 0},
 				{1, 1, 1}
 		};
-		int[] vectorB = {2, -3, 1};
+		float[] vectorB = {2, -3, 1};
 		
 		ThreadSum threadSum = new ThreadSum(lowerArray);
 		ThreadVector threadVector = new ThreadVector(lowerArray, vectorB);
-		
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e1) {
-			e1.printStackTrace();
-		}
 		
 		try {
 			threadSum.start();
