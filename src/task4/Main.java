@@ -24,7 +24,7 @@ public class Main {
 		try {
 			threadSum.start();
 		
-			for(int i = 0; i < vectorX.length; i++) {
+			for(int i = 0; i < vectorB.length; i++) {
 				threadSum.notice();
 				while((threadSum.getState() != State.WAITING) && (threadSum.getState() != State.TERMINATED))
 					Thread.sleep(1000);
