@@ -16,12 +16,11 @@ public class ThreadSum extends Thread {
 	public void run() {
 		try {
 			for(int i = 0; i < vectorB.length; i++) {
+				startWait();
 				sum = 0;
 				if(i > 0)
 					for(int j = 0; j < vectorB.length; j++)
 						sum = sum + (lowerArray[i][j]*vectorX[j]);
-				
-				startWait();
 			}
 		}
 		catch (InterruptedException e) {
