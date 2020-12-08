@@ -24,6 +24,8 @@ public class Main {
 		try {
 			threadSum.start();
 			threadVector.start();
+			
+			Thread.sleep(3000);
 		
 			for(int i = 0; i < vectorB.length; i++) {
 				threadSum.notice();
