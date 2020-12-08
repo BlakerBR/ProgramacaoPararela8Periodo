@@ -29,6 +29,7 @@ public class Main {
 		
 		try {
 			threadSum.start();
+			threadVector.start();
 		
 			for(int i = 0; i < vectorB.length; i++) {
 				threadSum.notice();
