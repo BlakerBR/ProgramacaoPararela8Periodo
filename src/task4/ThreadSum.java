@@ -16,9 +16,8 @@ public class ThreadSum extends Thread {
 			for(int i = 0; i < vectorX.length; i++) {
 				startWait();
 				sum = 0;
-				if(i > 0)
-					for(int j = 0; j < vectorX.length; j++)
-						sum = sum + (lowerArray[i][j]*vectorX[j]);
+				for(int j = 0; j < i; j++)
+					sum = sum + (lowerArray[i][j]*vectorX[j]);
 			}
 		}
 		catch (InterruptedException e) {
