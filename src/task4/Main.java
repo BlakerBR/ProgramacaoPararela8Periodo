@@ -27,18 +27,20 @@ public class Main {
 			
 			Thread.sleep(3000);
 		
+			System.out.println("Vetor X:");
 			for(int i = 0; i < vectorB.length; i++) {
 				threadSum.notice();
 				while((threadSum.getState() != State.WAITING) && (threadSum.getState() != State.TERMINATED))
 					Thread.sleep(1000);
 				threadVector.setSum(threadSum.getSum());
-				System.out.println(threadSum.getSum());
 				
 				threadVector.notice();
 				while((threadVector.getState() != State.WAITING) && (threadVector.getState() != State.TERMINATED))
 					Thread.sleep(1000);
 				threadSum.setVectorX(threadVector.getVectorX());
-				System.out.println(threadVector.getVectorX()[i]);
+				
+				
+				System.out.println("( " + threadVector.getVectorX()[i] + " )");
 			}
 		}
 		catch (InterruptedException e) {
